@@ -5,6 +5,6 @@ export const fetchProject = async () => {
   const data = await res.json()
   const projects: Project[] = data.projects
 
-  console.log(projects)
+  // console.log(projects)
   return projects
 }

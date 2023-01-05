@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {}
 
-const BackgroundCircles = (props: Props) => {
+const BackgroundCircles = ({}: Props) => {
   return (
     <motion.div 
     initial={{opacity: 0}}

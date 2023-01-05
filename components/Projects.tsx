@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { Project } from '../typings'
 import { urlFor } from '../sanity'
 type Props = {
-  projects : Project[]
+  projects : Project[] | null
 }
 
 const Projects = ({projects}: Props) => {
@@ -19,27 +19,28 @@ const Projects = ({projects}: Props) => {
 
       <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin'>
         {
-          projects.map((project, index) => (
+          projects?.map((project, index) => (
             // eslint-disable-next-line react/jsx-key
-            <div key={index} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-16 md:p=44 h-screen'>
+            <div key={project?._id} className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-16 md:p=44 h-screen'>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <motion.img
               initial={{y:300, opacity:0}}
               transition={{duration: 1.2}}
               whileInView={{opacity: 1, y: 0}}
               viewport={{once: true}}
-              src={urlFor(project.image).url()} alt='photo' className='w-[500px]'/>
+              src={urlFor(project?.image).url()} alt='photo' className='w-[500px]'/>
               <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                 <h4 className='text-4xl font-semibold text-center'>
-                  <span className='underline decoration-[#f7ab0a]/50'>Case Study {index+1} of {projects.length}: </span>
+                  <span className='underline decoration-[#f7ab0a]/50'>Case Study {index+1} of {projects?.length}: </span>
                   {project.title}
                 </h4>
                 <div className='flex items-center space-x-2 justify-center'>
-                {project?.technologies.map(technology => (
+                {project?.technologies?.map(technology => (
+                  // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
                   <img 
-                  key={technology._id} 
+                  key={technology?._id} 
                   className='h-10 w-10 object-cover'
-                  src={urlFor(technology.image).url()}/>
+                  src={urlFor(technology?.image).url()}/>
                 ))}
                 </div>
                 <p className='text-lg text-center md:text-left'>{project?.summary}</p>

@@ -1,3 +1,4 @@
+
 import { PageInfo } from "../typings";
 
 export const fetchPageInfo = async () => {
@@ -6,6 +7,6 @@ export const fetchPageInfo = async () => {
   
   const pageInfo: PageInfo = data.pageInfo
 
-  
+  // console.log(data.pageInfo)
   return pageInfo
 }

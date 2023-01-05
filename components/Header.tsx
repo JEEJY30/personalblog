@@ -7,7 +7,7 @@ import { Social } from '../typings';
 
 
 type Props = {
-  socials: Social[]
+  socials: Social[] | null
 }
 export default function Header({socials}: Props) {
   
@@ -18,10 +18,10 @@ export default function Header({socials}: Props) {
       animate={{x: 0, opacity: 1, scale: 1}}
       transition={{duration: 1.5,}}
       className='flex flex-row items-center'>
-        {socials.map(social => (
+        {socials?.map(social => (
           <SocialIcon 
-            key={social._id}
-            url={social.url} 
+            key={social?._id}
+            url={social?.url} 
             fgColor='gray' 
             bgColor='transparent'
           />

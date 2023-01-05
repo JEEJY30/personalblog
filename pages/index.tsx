@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
@@ -30,7 +31,7 @@ export default function Home({pageInfo, experience, skills, projects, socials}:P
   return (
     <div className='bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 '>
       <Head>
-        <title>JEEJYS Portfolio</title>
+        <title>George's Portfolio</title>
       </Head>
 
     <Header socials={socials}/>
@@ -74,14 +75,19 @@ export default function Home({pageInfo, experience, skills, projects, socials}:P
   )
 }
 
+// eslint-disable-next-line @next/next/no-typos
+
 export const getStaticProps: GetStaticProps<Props> = async() => {
+
+  
   const pageInfo: PageInfo = await fetchPageInfo()
   const experience: Experience[] = await fetchExperience()
   const skills: Skill[] = await fetchSkills()
   const projects: Project[] = await fetchProject()
   const socials: Social[] = await fetchSocial()
 
-  console.log({experience, skills})
+  
+  
   
   return {
     props:{
@@ -89,7 +95,7 @@ export const getStaticProps: GetStaticProps<Props> = async() => {
       experience,
       skills,
       projects,
-      socials
+      socials,
     },
     revalidate: 10,
   }

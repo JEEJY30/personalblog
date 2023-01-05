@@ -8,7 +8,7 @@ const query = groq`
 `
 
 type Data = {
-  skill: Skill[]
+  skill: Skill[] 
 }
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse<Data>) {

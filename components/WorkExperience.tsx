@@ -4,7 +4,7 @@ import ExperienceCard from './expcard/ExperienceCard'
 import { Experience } from '../typings'
 
 type Props = {
-  experiences: Experience[]
+  experiences: Experience[] | null
 }
 
 const WorkExperience = ({experiences}: Props) => {
@@ -18,7 +18,7 @@ const WorkExperience = ({experiences}: Props) => {
       <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl '>Experience</h3>
       <div className='w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin'>
         {experiences?.map(experience => (
-          <ExperienceCard key={experience._id} experience={experience}/>
+          <ExperienceCard key={experience?._id} experience={experience}/>
         ))}
       </div>
     </motion.div>
